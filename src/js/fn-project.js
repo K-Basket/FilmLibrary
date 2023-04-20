@@ -29,7 +29,7 @@ export function createMovieCard(movies) {
     .join('');
 }
 
-// рендерить разметку
+// рендерит разметку
 export function renderMovieGallery(element, markup) {
   element.insertAdjacentHTML('beforeend', markup);
 }
