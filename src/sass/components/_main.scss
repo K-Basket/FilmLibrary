@@ -1,0 +1,62 @@
+.movie-list {
+  @include tablet {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  @include desktop {
+    gap: 16px;
+  }
+}
+
+.movie-item {
+  margin-top: 20px;
+
+  @include tablet {
+    margin-top: 32px;
+    flex-basis: calc((100% - 32px) / 2);
+  }
+  @include desktop {
+    flex-basis: calc((100% - 48px) / 4);
+  }
+}
+
+.movie-card-thumb img {
+  border-radius: 7px;
+}
+
+.movie-content {
+  padding-top: 10px;
+
+  @include tablet {
+    padding-top: 8px;
+  }
+
+  @include desktop {
+    padding-top: 12px;
+  }
+}
+
+.movie-title,
+.movie-genre {
+  font-size: 12px;
+  line-height: calc(14 / 12);
+  text-transform: uppercase;
+
+  color: var(--color-black);
+
+  @include tablet {
+    font-size: 12px;
+    line-height: calc(16 / 12);
+  }
+
+  @include desktop {
+    font-size: 20px;
+    line-height: calc(24 / 20);
+  }
+}
+
+.movie-genre {
+  color: var(--color-accent);
+}
