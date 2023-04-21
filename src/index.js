@@ -1,3 +1,2 @@
-// import './js/goHomeMyLibrary';
-// import './js/fetchData';
+import './js/fetchDataApi';
 import './js/page-home';

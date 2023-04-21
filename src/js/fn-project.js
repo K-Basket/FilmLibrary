@@ -53,3 +53,12 @@ export function addSmoothScroling(element) {
     behavior: 'smooth',
   });
 }
+
+// функция скрывает кнопку LoadMore
+export function removesBtnLoadMore(element, data) {
+  if (data.page === data.total_pages) {
+    element.classList.add('visually-hidden');
+  } else {
+    element.classList.remove('visually-hidden');
+  }
+}
