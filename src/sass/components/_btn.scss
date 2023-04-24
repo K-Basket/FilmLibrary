@@ -1,6 +1,8 @@
 .btn {
-  margin-top: 14px;
-  margin-bottom: 8px;
+  // margin-top: 14px;
+  // margin-bottom: 8px;
+
+  // padding: 10px 23px;
 
   color: var(--color-black);
   background-color: var(--color-white);
@@ -20,16 +22,14 @@
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
 
-  @include tablet {
-    // order: 1;
-    padding: 12px 24px;
-    margin: 0;
-  }
+  // @include tablet {
+  //   // order: 1;
+  //   padding: 12px 24px;
+  //   margin: 0;
+  // }
 }
 
-.btn-home,
-.btn-load-more {
-  display: inline-block;
+.btn-home {
   padding: 10px 26px;
 
   @include tablet {
@@ -37,14 +37,12 @@
   }
 
   @include desktop {
-    padding: 14px 32px;
+    padding: 16px 32px;
   }
 }
 
 .btn-mylibrary {
-  display: inline-block;
   padding: 10px 22px;
-  margin-right: 40px;
 
   @include tablet {
     padding: 12px 20px;
@@ -70,20 +68,18 @@
 }
 
 .btn-watched {
-  margin: 0;
+  // margin: 0;
+  padding: 10px 23px;
+  margin-right: 4px;
 
-  // color: var(--color-accent);
-
-  @include desktop {
+  @include tablet {
     margin-right: 8px;
   }
 }
 
 .btn-queue {
   margin: 0;
-
-  // background-color: var(--color-white);
-  // color: var(--color-accent);
+  padding: 10px 24px;
 }
 
 .btn-load-more {
@@ -91,6 +87,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 60px;
+  padding: 10px 23px;
 }
 
 .btn-active {

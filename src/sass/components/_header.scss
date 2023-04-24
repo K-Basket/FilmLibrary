@@ -14,7 +14,7 @@
   justify-content: space-between;
   height: 460px;
 
-  padding: 0 14px;
+  padding: 14px 14px;
 
   background-image: linear-gradient(
       180deg,
@@ -44,7 +44,7 @@
   // BG tablet
   @include tablet {
     position: relative;
-    padding: 0 16px;
+    padding: 16px 16px;
     height: 222px;
 
     background-image: linear-gradient(
@@ -68,7 +68,7 @@
 
   // BG desktop
   @include desktop {
-    padding: 0 32px;
+    padding: 16px 32px;
     height: 316px;
 
     background-image: linear-gradient(
@@ -95,7 +95,7 @@
   @include tablet {
     display: flex;
     gap: 4px;
-    padding-top: 16px;
+    // padding-top: 16px;
   }
 
   @include desktop {
@@ -105,6 +105,7 @@
 
 .search-form {
   position: relative;
+  margin-top: 8px;
 
   & ::placeholder {
     color: var(--color-black);
@@ -119,7 +120,6 @@
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 14px;
-  // margin-bottom: 312px;
 
   width: 100%;
 
