@@ -27,11 +27,22 @@ a {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
   font-family: var(--main-font);
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
-  margin: 0 auto;
+}
+
+main {
+  flex-grow: 1;
+}
+
+footer {
+  flex-shrink: 0;
 }
 
 button {
