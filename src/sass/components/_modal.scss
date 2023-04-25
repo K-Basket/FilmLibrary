@@ -25,7 +25,7 @@
 
 .modal {
   position: relative;
-  max-width: 800px;
+  max-width: 480px;
   width: calc(100% - 40px);
   height: calc(100% - 40px);
 
@@ -35,6 +35,17 @@
   border-radius: 5px;
   overflow: auto;
   background-color: var(--color-white);
+
+  @include tablet {
+    display: flex;
+    // min-width: 704px;
+    width: 704px;
+    height: 552px;
+  }
+
+  @include desktop {
+    min-width: 806px;
+  }
 }
 
 .btn-modal-close {
@@ -53,9 +64,21 @@
   }
 }
 
+// article {
+//   @include tablet {
+//     // display: flex;
+//   }
+// }
+
 .modal-poster-wrap {
   margin-bottom: 20px;
-  // min-width: 240px;
+  // min-width: 265px;
+
+  @include tablet {
+    // min-width: 280px;
+    width: 264px;
+    // height: 373px;
+  }
 }
 
 .modal-movie-description {

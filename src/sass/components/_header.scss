@@ -112,6 +112,7 @@
   }
 
   @include tablet {
+    margin-top: 0;
     order: 0;
   }
 }
