@@ -13,7 +13,6 @@ import {
 import { getTrendMovieData, getSearchMovieData } from './fetchDataApi';
 
 import {
-  getMovieId,
   createMovieCard,
   renderMovieGallery,
   addSmoothScroling,
@@ -25,7 +24,6 @@ btnMyLibraryEl.addEventListener('click', onGoMyLibrary);
 window.addEventListener('load', onTrendMovie);
 btnLoadMoreEl.addEventListener('click', onTrendMovie);
 formSearchEl.addEventListener('submit', onSearchMovie);
-movieListEl.addEventListener('click', onClickMovie);
 
 let page = 1;
 let query = '';
@@ -108,8 +106,4 @@ async function onSearchLoadMore() {
   } catch (error) {
     console.log(error);
   }
-}
-
-async function onClickMovie(evt) {
-  console.log(getMovieId(evt));
 }

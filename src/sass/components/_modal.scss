@@ -1,4 +1,14 @@
-body {
+body.show-modal .backdrop {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: initial;
+}
+
+body.show-modal .modal {
+  transform: scale(1);
+}
+
+.stop-scroll {
   overflow: hidden;
 }
 
@@ -14,64 +24,68 @@ body {
   width: 100vw;
   height: 100vh;
 
-  background-color: rgba(0, 0, 0, 0.3);
-  // z-index: 999;
+  background-color: rgba(0, 0, 0, 0.4);
 
-  // pointer-events: none;
-  // opacity: 0;
-  // visibility: hidden;
-  // transform: opacity 250ms ease-in-out, visibility 200ms ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity var(--animation), visibility var(--animation);
 }
 
 .modal {
-  width: 100vw;
-  height: 100vh;
+  position: relative;
 
-  // max-width: 380px;
-  // width: calc(100% - 20px);
-  // height: calc(100% - 120px);
+  max-width: 380px;
+  width: calc(100% - 20px);
+  height: calc(100% - 120px);
 
   padding: 20px 20px;
-  // border-radius: 5px;
+  border-radius: 5px;
   overflow: auto;
   background-color: var(--color-white);
 
+  transform: scale(0.98);
+  transition: transform var(--animation);
+
   @include tablet {
-    // display: flex;
-    min-width: 704px;
-    // width: 704px;
-    height: 552px;
+    max-width: none;
+    width: 704px;
+    height: fit-content;
   }
 
   @include desktop {
     min-width: 806px;
-    height: 558px;
   }
 }
 
 .btn-modal-close {
-  position: fixed;
+  display: flex;
+  position: absolute;
   top: 8px;
   right: 8px;
+  z-index: 1;
 
   border: none;
   stroke: var(--color-black);
   background-color: transparent;
+  transform: scale(1);
 
-  & svg {
-    border: solid 1px var(--color-black);
-    background-color: var(--color-white);
-    border-radius: 50%;
+  &:hover,
+  :focus {
+    stroke: var(--color-accent);
+    transform: scale(1.1);
+    transition: transform var(--animation);
   }
 }
 
 .modal-article {
   @include tablet {
     display: flex;
-    gap: 68px;
+    gap: 40px;
+  }
 
-    // width: calc(50% - 40px);
-    // height: calc(50% - 40px);
+  @include desktop {
+    gap: 28px;
   }
 }
 
@@ -82,21 +96,30 @@ body {
   margin-right: auto;
 
   @include tablet {
-    min-width: 264px;
-    // width: 264px;
-    // height: 373px;
+    min-width: 284px;
+    margin-bottom: 0;
+  }
+
+  @include desktop {
+    min-width: 375px;
   }
 }
 
 .modal-poster-img {
+  border-radius: 5px;
   width: 100%;
   height: 100%;
 }
 
 .modal-movie-description {
+  position: relative;
   margin-bottom: 20px;
   line-height: calc(16 / 12);
   color: var(--color-black);
+
+  @include tablet {
+    margin-bottom: 0;
+  }
 }
 
 .modal-movie-title {
@@ -107,6 +130,11 @@ body {
   text-transform: uppercase;
 
   color: var(--color-black);
+
+  @include desktop {
+    font-size: 30px;
+    line-height: calc(35 / 30);
+  }
 }
 
 .modal-movie-descrn-list {

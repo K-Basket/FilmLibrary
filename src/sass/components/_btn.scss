@@ -7,7 +7,7 @@
   line-height: calc(14 / 12);
   text-transform: uppercase;
 
-  border: none;
+  border: solid 1px var(--color-black);
   border-radius: 100px;
   &:hover {
     transform: scale(1.03);
@@ -26,7 +26,7 @@
   }
 
   @include desktop {
-    padding: 16px 32px;
+    padding: 14px 32px;
   }
 }
 
@@ -79,7 +79,17 @@
   padding: 10px 23px;
 }
 
+.modal-btn {
+  margin-top: 20px;
+  margin-bottom: 40px;
+
+  @include tablet {
+    margin-bottom: 64px;
+  }
+}
+
 .btn-active {
+  border: none;
   background-color: #b92f2c;
   color: var(--color-white);
 }
