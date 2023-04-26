@@ -47,7 +47,7 @@ function onGoMyLibrary() {
 async function onTrendMovie() {
   try {
     const data = await getTrendMovieData(page);
-    console.log('Trending', data);
+    // console.log('Trending', data);
 
     renderMovieGallery(movieListEl, createMovieCard(data.results));
     removesBtnLoadMore(btnLoadMoreEl, data);

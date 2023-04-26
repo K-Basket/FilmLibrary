@@ -29,6 +29,52 @@ export function createMovieCard(movies) {
     .join('');
 }
 
+// создает разметку карточки для моодального окна
+
+export function createMovieModal(movie) {
+  return `
+  <div class="modal-poster-wrap">
+    <img
+      class="modal-poster-img"
+      src="https://image.tmdb.org/t/p/w500/${movie.poster_path}"
+      alt="poster ${movie.title}"
+    />
+  </div>
+  <div class="modal-movie-description">
+    <h2 class="modal-movie-title">${movie.title}</h2>
+    <ul class="modal-movie-descrn-list">
+      <li class="modal-movie-descrp-item">
+        <p class="descrp-title">Vote / Votes</p>
+        <p class="descrp-text">
+          <span>${movie.vote_average.toFixed(1)}</span> <span>/</span> <span>${
+    movie.vote_count
+  }</span>
+        </p>
+      </li>
+      <li class="modal-movie-descrp-item">
+        <p class="descrp-title">Popularity</p>
+        <p class="descrp-text">${movie.popularity.toFixed(1)}</p>
+      </li>
+      <li class="modal-movie-descrp-item">
+        <p class="descrp-title">Original Title</p>
+        <p class="descrp-text">${movie.original_title}</p>
+      </li>
+      <li class="modal-movie-descrp-item">
+        <p class="descrp-title">Genre</p>
+        <p class="descrp-text">${movie.genres.map(el => el.name).join(', ')}</p>
+      </li>
+    </ul>
+    <p class="modal-movie-about-title">About</p>
+    <p class="modal-movie-about-text">
+      ${movie.overview}
+    </p>
+    <div class="modal-btn">
+      <button class="btn btn-watched" type="button">add to Watched</button>
+      <button class="btn btn-queue" type="button">add to Queue</button>
+    </div>
+  </div>`;
+}
+
 // рендерит разметку
 export function renderMovieGallery(element, markup) {
   element.insertAdjacentHTML('beforeend', markup);

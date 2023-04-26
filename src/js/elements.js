@@ -7,3 +7,4 @@ export const movieListEl = document.querySelector('#movie-list');
 export const btnLoadMoreEl = document.querySelector('#btn-load-more');
 export const backdropEl = document.querySelector('.js-backdrop');
 export const modalCloseEl = document.querySelector('.js-modal-close');
+export const modalEl = document.querySelector('#modal');

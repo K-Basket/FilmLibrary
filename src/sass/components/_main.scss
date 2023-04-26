@@ -12,6 +12,13 @@
 
 .movie-item {
   margin-top: 20px;
+  cursor: pointer;
+  transform: scale(1);
+  transition: transform var(--animation);
+
+  &:hover {
+    transform: scale(1.02);
+  }
 
   @include tablet {
     margin-top: 32px;
