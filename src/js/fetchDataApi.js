@@ -4,9 +4,6 @@ const TREND_URL = `${BASE_URL}/trending/movie/week`;
 const SEARCH_URL = `${BASE_URL}/search/movie`;
 const SEARCH_ID_URL = `${BASE_URL}/movie/`;
 
-const temp = `
-https://api.themoviedb.org/3/movie/{movie_id}?api_key=c05652c397b2dd01065e8cba4a8a45ab`;
-
 export async function getTrendMovieData(page) {
   const response = await fetch(`${TREND_URL}?api_key=${API_KEY}&page=${page}`);
   return await response.json();

@@ -6,6 +6,8 @@ import {
   saveToLocalStorage,
   loadFromLocalStorage,
   createArrayLocalStorage,
+  addAccentColor,
+  removeLocalStorage,
 } from './fn-project';
 import { getSearchIdMovieData } from './fetchDataApi';
 
@@ -20,23 +22,27 @@ let movieId = null;
 async function onOpenModal(evt) {
   movieId = getMovieId(evt);
 
-  if (getMovieId(evt)) {
-    document.body.classList.add('show-modal', 'stop-scroll');
+  if (!getMovieId(evt)) {
+    return;
   }
+
+  createArrayLocalStorage('watched');
+  createArrayLocalStorage('queue');
+
+  document.body.classList.add('show-modal', 'stop-scroll');
 
   try {
     const data = await getSearchIdMovieData(movieId);
-    // console.log('Id Film', data);
 
     renderMovieGallery(modalEl, createMovieModal(data));
   } catch (error) {
     console.warn(error);
   }
 
-  // Добавить переименование кнопок под этой записью!!!
-  console.log(document.querySelector('#add-to-watched'));
+  renameBtn('watched', movieId);
+  renameBtn('queue', movieId);
 
-  console.log('Global:', movieId); // temp
+  console.log('Movie ID:', movieId); // temp
 }
 
 function onClickWatchQueue(evt) {
@@ -45,14 +51,13 @@ function onClickWatchQueue(evt) {
 }
 
 function addIdToLocalStorage(evt, nameBtn) {
-  // const btnWatched = evt.target.dataset.action;
-  const btnWatched = evt.target.dataset.action;
+  const modalBtn = evt.target;
 
-  createArrayLocalStorage(nameBtn);
+  // createArrayLocalStorage(nameBtn);
 
   let dataLocalStorage = loadFromLocalStorage(nameBtn);
 
-  if (btnWatched !== nameBtn) {
+  if (modalBtn.dataset.action !== nameBtn) {
     return;
   }
 
@@ -60,16 +65,30 @@ function addIdToLocalStorage(evt, nameBtn) {
     dataLocalStorage.push(movieId);
     saveToLocalStorage(nameBtn, dataLocalStorage);
 
-    evt.target.textContent = `Remove from ${nameBtn}`;
+    modalBtn.textContent = `Remove from ${nameBtn}`;
+    addAccentColor(modalBtn);
   } else {
     dataLocalStorage.splice(dataLocalStorage.indexOf(movieId), 1);
     saveToLocalStorage(nameBtn, dataLocalStorage);
 
-    evt.target.textContent = `Add to ${nameBtn}`;
+    modalBtn.textContent = `Add to ${nameBtn}`;
+    addAccentColor(modalBtn);
+  }
+}
+
+function renameBtn(key, id) {
+  const modalBtn = document.querySelector(`#add-to-${key}`);
+
+  if (loadFromLocalStorage(key).includes(id)) {
+    modalBtn.textContent = `Remove from ${key}`;
+    addAccentColor(modalBtn);
   }
 }
 
 function onCloseModal() {
+  removeLocalStorage('watched');
+  removeLocalStorage('queue');
+
   document.body.classList.remove('show-modal', 'stop-scroll');
   modalEl.innerHTML = '';
 }

@@ -1,4 +1,6 @@
 .btn {
+  max-width: 150px;
+
   color: var(--color-black);
   background-color: var(--color-white);
 
@@ -73,10 +75,11 @@
 
 .btn-load-more {
   display: block;
+  min-width: 160px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 60px;
-  padding: 10px 23px;
+  padding: 12px 23px;
 }
 
 .modal-btn {
@@ -86,6 +89,12 @@
   @include tablet {
     margin-bottom: 64px;
   }
+}
+
+.btn-add-to {
+  padding-left: 0;
+  padding-right: 0;
+  min-width: 160px;
 }
 
 .btn-active {

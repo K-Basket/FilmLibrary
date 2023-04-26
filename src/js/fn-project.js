@@ -1,3 +1,5 @@
+// 💙💛 Koshyk Kostiantyn
+
 // сооздает разметку карточки фильма для главной страницы
 export function createMovieCard(movies) {
   return movies
@@ -68,8 +70,8 @@ export function createMovieModal(movie) {
       ${movie.overview}
     </p>
     <div class="modal-btn">
-      <button class="btn btn-watched" type="button" data-action="watched" id="add-to-watched">add to Watched</button>
-      <button class="btn btn-queue" type="button" data-action="queue" id="add-to-queue">add to Queue</button>
+      <button class="btn btn-watched btn-add-to" type="button" data-action="watched" id="add-to-watched">add to Watched</button>
+      <button class="btn btn-queue btn-add-to" type="button" data-action="queue" id="add-to-queue">add to Queue</button>
     </div>
   </div>`;
 }
@@ -85,7 +87,7 @@ export function getMovieId(evt) {
     return;
   }
 
-  return evt.target.closest('#movie-item').dataset.id;
+  return Number(evt.target.closest('#movie-item').dataset.id);
 }
 
 // функция делает плавный скролл
@@ -108,8 +110,6 @@ export function removesBtnLoadMore(element, data) {
   }
 }
 
-// 💙💛 Koshyk Kostiantyn
-
 // функция добавляяет в Local Storage
 export function saveToLocalStorage(key, value) {
   try {
@@ -128,11 +128,6 @@ export function loadFromLocalStorage(key) {
   }
 }
 
-// функция переименовывает кнопку
-export function renameBtnTextCont(btn, nameBtn) {
-  btn.textContent = nameBtn;
-}
-
 // содает пустой массив в Local Storage, если такой отсутствует
 export function createArrayLocalStorage(key) {
   if (localStorage.getItem(key) === null) {
@@ -146,13 +141,6 @@ export function removeLocalStorage(key) {
   }
 }
 
-// // функция изменяет название кнопки
-// export function renameBtn(btn, key, nameA, nameB, id, btnColorClass) {
-//   if (!loadFromLocalStorage(key).find(el => el.id === Number(id))) {
-//     btn.textContent = nameA;
-//     btn.classList.remove(btnColorClass);
-//   } else {
-//     btn.textContent = nameB;
-//     btn.classList.add(btnColorClass);
-//   }
-// }
+export function addAccentColor(btn) {
+  btn.classList.toggle('btn-active');
+}
