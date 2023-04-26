@@ -30,7 +30,6 @@ export function createMovieCard(movies) {
 }
 
 // создает разметку карточки для моодального окна
-
 export function createMovieModal(movie) {
   return `
   <div class="modal-poster-wrap">
@@ -69,8 +68,8 @@ export function createMovieModal(movie) {
       ${movie.overview}
     </p>
     <div class="modal-btn">
-      <button class="btn btn-watched" type="button">add to Watched</button>
-      <button class="btn btn-queue" type="button">add to Queue</button>
+      <button class="btn btn-watched" type="button" data-action="watched" id="add-to-watched">add to Watched</button>
+      <button class="btn btn-queue" type="button" data-action="queue" id="add-to-queue">add to Queue</button>
     </div>
   </div>`;
 }
@@ -108,3 +107,52 @@ export function removesBtnLoadMore(element, data) {
     element.classList.remove('visually-hidden');
   }
 }
+
+// 💙💛 Koshyk Kostiantyn
+
+// функция добавляяет в Local Storage
+export function saveToLocalStorage(key, value) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+// функция читает из Local Storage
+export function loadFromLocalStorage(key) {
+  try {
+    return null ? undefined : JSON.parse(localStorage.getItem(key));
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+// функция переименовывает кнопку
+export function renameBtnTextCont(btn, nameBtn) {
+  btn.textContent = nameBtn;
+}
+
+// содает пустой массив в Local Storage, если такой отсутствует
+export function createArrayLocalStorage(key) {
+  if (localStorage.getItem(key) === null) {
+    localStorage.setItem(key, '[]');
+  }
+}
+// Удаляет пустой массив в LocalStorage, если он пуст
+export function removeLocalStorage(key) {
+  if (localStorage.getItem(key) === '[]') {
+    localStorage.removeItem(key);
+  }
+}
+
+// // функция изменяет название кнопки
+// export function renameBtn(btn, key, nameA, nameB, id, btnColorClass) {
+//   if (!loadFromLocalStorage(key).find(el => el.id === Number(id))) {
+//     btn.textContent = nameA;
+//     btn.classList.remove(btnColorClass);
+//   } else {
+//     btn.textContent = nameB;
+//     btn.classList.add(btnColorClass);
+//   }
+// }
